@@ -5,15 +5,15 @@ import time
 
 load_dotenv()
 
-auth = tweepy.OAuthHandler("ZOhfkoiUKG7aifgoYPQisglmb", "ATlKadupbDyeP8hjB8ZdtsjIvKSSOfy3vGLPiRPzCej2QwIMEz")
-auth.set_access_token("1619762473908707330-QuNFhh6DdWqh9MfGTZ4tlNgp11fVeS", "SJWubeAxx4yZXOQRRB1CoV0kXlYpqFa5Gp7ZRd9k9w8cT")
+auth = tweepy.OAuthHandler(os.environ['api_key'], os.environ['api_key_secret'])
+auth.set_access_token(os.environ['acess_token'], ['acess_token_secret'])
 
 api = tweepy.API(auth)
 
 search_word = "ssd"
 
 # procure pelos tweets com a palavra "ssd"
-tweets = tweepy.Cursor(api.search_tweets, q=search_word).items(4)
+tweets = tweepy.Cursor(api.search_tweets, q=search_word).items(50)
 
 # Loop through the results and retweet each one
 for tweet in tweets:
@@ -25,7 +25,7 @@ for tweet in tweets:
         # Colocando o meu texto no retweet
         custom_text = "SSD NVME M2 com entrega garantida e marca garantida no mercado você encontra aqui: https://lojadupovvo.com.br/collections/mais-vendidos/products/kingspec-m-2-ssd! #ssd #technology"
         api.update_status(f"{custom_text}", in_reply_to_status_id=tweet.id)
-        print(f"Successfully added custom text to retweet.")
+        print(f"Retweerd adicionado com sucesso!.")
         
         time.sleep(5)
     except tweepy.TwitterServerError as error:
