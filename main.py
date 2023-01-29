@@ -23,7 +23,7 @@ for tweet in tweets:
         print(f"Retweeted tweet: {tweet.text}")
         
         # Colocando o meu texto no retweet
-        custom_text = "Esse ssd é incrível e pode ser encontrado aqui: https://lojadupovvo.com.br/collections/mais-vendidos/products/kingspec-m-2-ssd! #ssd #technology"
+        custom_text = "SSD NVME M2 com entrega garantida e marca garantida no mercado você encontra aqui: https://lojadupovvo.com.br/collections/mais-vendidos/products/kingspec-m-2-ssd! #ssd #technology"
         api.update_status(f"{tweet.text} {custom_text}", in_reply_to_status_id=tweet.id)
         print(f"Successfully added custom text to retweet.")
         
