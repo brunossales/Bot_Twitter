@@ -15,7 +15,6 @@ search_word = "ssd"
 # procure pelos tweets com a palavra "ssd"
 tweets = tweepy.Cursor(api.search_tweets, q=search_word).items(50)
 
-# Loop through the results and retweet each one
 for tweet in tweets:
     try:
         # Retweet o tweet
